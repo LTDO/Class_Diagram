@@ -1,17 +1,43 @@
 @startuml
-class Subject
-{
-  + observers: vector<Observer>
-   ..
-  + attach(obs:Observer)
+interface ChristmasTree {
+ +decorate(): String
+}
+class ChristmasTreeImpl implements ChristmasTree {
+  + decorate(): String
 }
 
-' class Observer extends Subject
-' {
-'   +subj: Subject
-'   ..
-'   +update()
-' }
-' note "notify():\nfor observer in vector<Observer> observer.update()" N2
-' Subject .. N2
+abstract class TreeDecorator  implements ChristmasTree{
+ +decorate(): String
+}
+
+class BubbleLights extends TreeDecorator{
+ ChristmasTree tree
+ ..
+ +decorate: String
+ -decorateWithBubbleLights(): String
+
+}
+
+class Garland extends TreeDecorator{
+ ChristmasTree tree
+ ..
+ +decorate: String
+ -decorateWithGarland(): String
+
+}
+
+class Tinsel extends TreeDecorator{
+ ChristmasTree tree
+ ..
+ +decorate: String
+ -decorateWithTinsel(): String
+}
+
+class TreeTopper extends TreeDecorator{
+ ChristmasTree tree
+ ..
+ +decorate: String
+ -decorateWithTreeTopper(): String
+
+}
 @enduml
