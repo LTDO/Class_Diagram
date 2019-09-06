@@ -1,0 +1,17 @@
+@startuml
+class Subject
+{
+  + observers: vector<Observer>
+   ..
+  + attach(obs:Observer)
+}
+
+' class Observer extends Subject
+' {
+'   +subj: Subject
+'   ..
+'   +update()
+' }
+' note "notify():\nfor observer in vector<Observer> observer.update()" N2
+' Subject .. N2
+@enduml
